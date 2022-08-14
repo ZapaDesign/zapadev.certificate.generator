@@ -27,6 +27,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('/app', function () {
+        return view('app');
+    })->name('app');
+
     Route::get('/certificates', function () {
         return view('certificates');
     })->name('certificates');
