@@ -27,7 +27,7 @@
 
                             <div class="mt-4">
                                 <x-jet-label for="start" value="{{ __('Cource start') }}" />
-                                <x-jet-input id="start" class="block mt-1 w-full" type="date" name="satrt" required autocomplete="current-password" />
+                                <x-jet-input id="start" class="block mt-1 w-full" type="date" name="satrt" required autocomplete="current-start" />
                             </div>
 
                             <div class="mt-4">
@@ -42,6 +42,21 @@
                                     <option>A2</option>
                                     <option>B1</option>
                                 </select>
+                            </div>
+
+                            <div class="mt-4">
+                                <x-jet-label for="time" value="{{ __('Number of hours') }}" />
+                                <x-jet-input id="time" class="block mt-1 w-full" type="number" name="time" required autocomplete="current-password" />
+                            </div>
+
+                            <div class="mt-4">
+                                <x-jet-label for="location" value="{{ __('Place of study') }}" />
+                                <x-jet-input id="location" class="block mt-1 w-full" type="text" name="time" required autocomplete="current-password" />
+                            </div>
+
+                            <div class="mt-4">
+                                <x-jet-label for="date" value="{{ __('Date of issue') }}" />
+                                <x-jet-input id="date" class="block mt-1 w-full" type="date" name="date" required autocomplete="current-password" />
                             </div>
 
 
