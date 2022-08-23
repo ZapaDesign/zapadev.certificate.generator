@@ -8,8 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-{{--                <x-jet-welcome />--}}
-
+                {{--                <x-jet-welcome />--}}
 
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -17,50 +16,58 @@
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <thead class="bg-gray-50">
-                                        <tr>
-                                            <th
+                                    <tr>
+                                        <th
                                                 scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >ID</th>
-                                            <th
+                                        >ID
+                                        </th>
+                                        <th
                                                 scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >Student</th>
+                                        >Student
+                                        </th>
 
-                                            <th
+                                        <th
                                                 scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >Level</th>
-                                            <th
+                                        >Level
+                                        </th>
+                                        <th
                                                 scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >Start</th>
-                                            <th
+                                        >Start
+                                        </th>
+                                        <th
                                                 scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >Finish</th>
-                                            <th
+                                        >Finish
+                                        </th>
+                                        <th
                                                 scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >Time</th>
-                                            <th
+                                        >Time
+                                        </th>
+                                        <th
                                                 scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >Location</th>
-                                            <th
+                                        >Location
+                                        </th>
+                                        <th
                                                 scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >Date</th>
-                                            <th scope="col" class="relative px-6 py-3">
-                                                <span class="sr-only">Edit</span>
-                                            </th>
-                                        </tr>
+                                        >Date
+                                        </th>
+                                        <th scope="col" class="relative px-6 py-3">
+                                            <span class="sr-only">Edit</span>
+                                        </th>
+                                    </tr>
                                     </thead>
 
                                     <tbody class="bg-white divide-y divide-gray-200">
 
                                     <?php foreach ($certificates as $certificate): ?>
-                                        <tr>
+                                    <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">
                                                 {{$certificate->id}}
@@ -107,8 +114,10 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 
 
-                                            <a href="{{route('certificate.show', $certificate->id)}}" class="text-indigo-600 hover:text-indigo-900 pl-3 pr-3">Show</a>
-                                            <a class="text-indigo-600 hover:text-indigo-900 pl-3 pr-3" href="">Delete</a>
+                                            <a href="{{route('certificate.show', $certificate->id)}}"
+                                               class="text-indigo-600 hover:text-indigo-900 pl-3 pr-3">Show</a>
+                                            <a class="text-indigo-600 hover:text-indigo-900 pl-3 pr-3"
+                                               href="">Delete</a>
 
                                         </td>
                                     </tr>

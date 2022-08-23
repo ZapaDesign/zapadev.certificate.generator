@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -29,9 +30,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/app', function () {
-        return view('app');
-    })->name('app');
+    Route::get('/app', [AppController::class, 'index'])->name('app');
 
     Route::get('/certificates', [CertificateController::class, 'index'])->name('certificates');
     Route::get('/certificates/{id}/show', [CertificateController::class, 'show'])->name('certificate.show');
