@@ -11,7 +11,6 @@
 {{--                <x-jet-welcome />--}}
 
 
-
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -48,7 +47,10 @@
                                                 scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >Location</th>
-
+                                            <th
+                                                scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                            >Date</th>
                                             <th scope="col" class="relative px-6 py-3">
                                                 <span class="sr-only">Edit</span>
                                             </th>
@@ -56,74 +58,67 @@
                                     </thead>
 
                                     <tbody class="bg-white divide-y divide-gray-200">
-                                    <tr v-for="photo in photos" :key="photo.id">
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div
-                                                class="text-sm text-gray-900"
-                                            >1</div>
-                                        </td>
 
+                                    <?php foreach ($certificates as $certificate): ?>
+                                        <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">
-                                                Name
+                                                {{$certificate->id}}
                                             </div>
                                         </td>
 
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">
-                                                A1
+                                                {{$certificate->student_id}}
+                                            </div>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">
+                                                {{$certificate->level}}
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">
-                                                2012-05-12
+                                                {{$certificate->start}}
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">
-                                                2015-06-25
+                                                {{$certificate->finish}}
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">
-                                                155
+                                                {{$certificate->time}}
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">
-                                                New Your
+                                                {{$certificate->location}}
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">
+                                                {{$certificate->date}}
                                             </div>
                                         </td>
                                         <!-- ACTIONS -->
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 
-                                            <Link
-                                                class="text-indigo-600 hover:text-indigo-900 pl-3 pr-3"
-                                                :href="route('admin.photos.show', photo.id)"
-                                            >
-                                            View
-                                            </Link>
 
-                                            <Link
-                                                class="text-indigo-600 hover:text-indigo-900 pl-3 pr-3"
-                                                :href="route('admin.photos.edit', photo.id)"
-                                            >Edit</Link>
+                                            <a href="{{route('certificate.show', $certificate->id)}}" class="text-indigo-600 hover:text-indigo-900 pl-3 pr-3">Show</a>
+                                            <a class="text-indigo-600 hover:text-indigo-900 pl-3 pr-3" href="">Delete</a>
 
-                                            <JetButton
-                                                class="text-indigo-600 hover:text-indigo-900 cursor-pointer"
-                                                @click="delete_photo(photo)">
-                                                Delete
-                                            </JetButton>
                                         </td>
                                     </tr>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
 
             </div>
         </div>

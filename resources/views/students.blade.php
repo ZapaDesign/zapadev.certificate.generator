@@ -10,6 +10,9 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 {{--                <x-jet-welcome />--}}
                 <h1>Students</h1>
+                <?php foreach ($students as $student): ?>
+                    <p>{{$student->name}}</p>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
