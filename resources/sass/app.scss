@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'inc/fonts';
+@import 'inc/var';
+
+body {
+	font-family: 'opinionpro';
+}
+
+.certificate-canvas {
+	background-color: $main-color;
+}
+
+.canvas {
+	width: 100%!important;
+	height: auto!important;
+	
+	&__wrap {
+		width: 100%;
+		overflow: auto;
+	}
+	
+	&-container {
+		width: 100% !important;
+	}
+	
+}

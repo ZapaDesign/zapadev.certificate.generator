@@ -112,8 +112,14 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-span-12 sm:col-span-9 bg-gray-100">
-
+                    <div class="canvas-wrap col-span-12 sm:col-span-9">
+                        <canvas
+                                class="canvas"
+                                id="canvas"
+                                data-imgsrc=""
+                                width="2480"
+                                height="3508">
+                        </canvas>
                     </div>
                 </div>
             </div>
