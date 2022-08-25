@@ -103,7 +103,7 @@
 
 
                             <div class="grid grid-cols-2 gap-4 mt-4">
-                                <x-jet-button class="w-full">
+                                <x-jet-button id="downloadBtn" class="w-full">
                                     {{ __('Download') }}
                                 </x-jet-button>
                                 <x-jet-button class="w-full">

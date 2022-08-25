@@ -100,9 +100,6 @@ fabric.Image.fromURL(options.logoUrl, (image) => {
     const oImage = image.set({
         left: options.getRelativeWidth(12),
         top: options.getRelativeHeight(87.5),
-        scaleX: 1,
-        scaleY: 1,
-        scale: 1,
     });
     canvas.add(oImage);
 });
@@ -110,9 +107,6 @@ fabric.Image.fromURL(options.signatureUrl, (image) => {
     const oImage = image.set({
         left: options.getRelativeWidth(60),
         top: options.getRelativeHeight(90),
-        scaleX: 1,
-        scaleY: 1,
-        scale: 1,
     });
     canvas.add(oImage);
 });
@@ -126,9 +120,62 @@ canvas.add(afterStrongCanvasText)
 canvas.add(contactsCanvasText)
 
 //-----------------------------------
-
-document.getElementById('student').addEventListener('input', () => {
-    studentCanvasText.text = document.getElementById('student').value
+let studentInput = document.getElementById('student')
+studentInput.addEventListener('input', () => {
+    studentCanvasText.text = studentInput.value
     canvas.renderAll()
 });
+
+//-----------------------------------
+
+const downloadBtn = document.getElementById('downloadBtn')
+
+downloadBtn.addEventListener('click', function (e) {
+    if(studentInput.value) {
+        const image = canvas.toDataURL("image/png").replace("image/jpg", "image/octet-stream")
+        let element = document.createElement('a'),
+            filename = 'Certificate - ' + studentInput.value + '.jpg'
+        element.setAttribute('href', image)
+        element.setAttribute('download', filename)
+        if (confirm("Save the certificate in the database?")) {
+
+            // TODO Попробовать переделать AJAX а Fetch
+            // fetch(flow.url, { method: "POST" })
+            //     .then((res) => res.json())
+            //     .then((json) => console.log(json))
+            //     .catch((err) => console.error("error:", err));
+
+            // $.ajax({
+            //     url: flow.url,
+            //     type: 'POST',
+            //     data: {
+            //         action: 'add_certificate',
+            //         id: certIDInput.value ? certIDInput.value : flow.lastCertID + '/' + new Date().getFullYear().toString().substr(-2),
+            //         name: nameInput.value,
+            //         start: startInput.value,
+            //         finish: finishInput.value,
+            //         level: levelSelect.value,
+            //         hours: hoursInput.value,
+            //         location: locationInput.value,
+            //         date: dateInput.value,
+            //     },
+            //     dataType: 'text',
+            //
+            //     success: function () {
+            //         // TODO Fix update certificate ID on canvas after AJAX
+            //
+            //         certIDInput.value = Number(flow.lastCertID) + 1 + '/' + new Date().getFullYear().toString().substr(-2)
+            //         drawImage()
+            //         element.click()
+            //     },
+            //     error: function () {
+            //
+            //     }
+            // });
+        }
+        element.click()
+    } else {
+        alert(`${options.name.label} field is empty. Please enter the student's name.`)
+    }
+})
 
