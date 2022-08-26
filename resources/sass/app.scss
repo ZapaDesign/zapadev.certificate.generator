@@ -5,17 +5,13 @@
 @import 'inc/fonts';
 @import 'inc/var';
 
-body {
-	font-family: 'opinionpro';
-}
-
-.certificate-canvas {
-	background-color: $main-color;
-}
-
 .canvas {
 	width: 100%!important;
 	height: auto!important;
+	
+	&__title {
+		font-family: 'Opinion';
+	}
 	
 	&__wrap {
 		width: 100%;

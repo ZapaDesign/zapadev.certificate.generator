@@ -15,16 +15,42 @@ let options = {
     width: 2480,
     height: 3508,
     bgUrl: 'http://zapadev.certificate.generator/assets/images/certificate-image-001.png',
-    fontFamily: 'Opinion Pro',
+    fontFamily: 'Opinion',
     padding: {
         top: 0,
         bottom: 0,
         left: 224,
         right: 0,
     },
+    id: '2022/505',
     beforeText: 'This is to certify that',
     afterText: 'has completed a course in',
     afterStrongText: 'General English',
+    list: {
+        x: 15,
+        y: 60,
+        level: {
+            label:'Level',
+            value: 'A1',
+        },
+        period: {
+            label: 'Course dates',
+            start: '2021-05-05',
+            finish: '2022-05-25',
+        },
+        time: {
+            label: 'Number of hours',
+            value: 0
+        },
+        location: {
+            label: 'Place of Study',
+            value: 'Poltava',
+        },
+        date: {
+            label: 'Date of issue',
+            value: '2001-05-25',
+        },
+    },
     contacts: 'Poltava, Ukraine\n+380661212649\nmasterclass.pl@gmail.com\nmasterclass.pl.ua',
     signatureUrl: 'http://zapadev.certificate.generator/assets/images/certificate-signature-demo.svg',
     logoUrl: 'http://zapadev.certificate.generator/assets/images/certificate-logo-demo.svg',
@@ -89,16 +115,94 @@ afterStrongCanvasText = new fabric.Text( options.afterStrongText, {
     fontFamily: options.fontFamily,
 }),
 contactsCanvasText = new fabric.Text( options.contacts, {
-    left: options.getRelativeWidth(12),
+    left: options.getRelativeWidth(15),
     top: options.getRelativeHeight(92.5),
     fontSize: 40,
     originX: 'left',
     fontFamily: options.fontFamily,
 })
 
+
+// List
+
+
+let list = new fabric.Group([
+    new fabric.Group([
+        new fabric.Text(options.list.period.label + ':', {
+            fontSize: 70,
+            fontFamily: options.fontFamily,
+        }),
+        new fabric.Text(options.list.period.start, {
+            fontSize: 70,
+            left: options.getRelativeWidth(22),
+            fontFamily: options.fontFamily,
+        }),
+        new fabric.Text(options.list.period.finish, {
+            fontSize: 70,
+            left: options.getRelativeWidth(40),
+            fontFamily: options.fontFamily,
+        })], {
+    }),
+    new fabric.Group([
+        new fabric.Text(options.list.level.label + ':', {
+            fontSize: 70,
+            fontFamily: options.fontFamily,
+        }),
+        new fabric.Text(options.list.level.value, {
+            fontSize: 70,
+            left: options.getRelativeWidth(22),
+            fontFamily: options.fontFamily,
+        })], {
+        top: options.getRelativeHeight(3 ),
+    }),
+    new fabric.Group([
+        new fabric.Text(options.list.time.label + ':', {
+            fontSize: 70,
+            fontFamily: options.fontFamily,
+        }),
+        new fabric.Text(options.list.time.value.toString(), {
+            fontSize: 70,
+            left: options.getRelativeWidth(22),
+            fontFamily: options.fontFamily,
+        })], {
+        top: options.getRelativeHeight(6 ),
+    }),
+    new fabric.Group([
+        new fabric.Text(options.list.location.label + ':', {
+            fontSize: 70,
+            fontFamily: options.fontFamily,
+        }),
+        new fabric.Text(options.list.location.value, {
+            fontSize: 70,
+            left: options.getRelativeWidth(22),
+            fontFamily: options.fontFamily,
+        })], {
+        top: options.getRelativeHeight(9 ),
+    }),
+    new fabric.Group([
+        new fabric.Text(options.list.date.label + ':', {
+            fontSize: 70,
+            fontFamily: options.fontFamily,
+        }),
+        new fabric.Text(options.list.date.value.toString(), {
+            fontSize: 70,
+            left: options.getRelativeWidth(22),
+            fontFamily: options.fontFamily,
+        })], {
+        top: options.getRelativeHeight(12 ),
+    })], {
+    left: options.getRelativeWidth(options.list.x),
+    top: options.getRelativeHeight(options.list.y),
+})
+
+canvas.add(list);
+
+
+//----------
+
 fabric.Image.fromURL(options.logoUrl, (image) => {
     const oImage = image.set({
-        left: options.getRelativeWidth(12),
+        left: options.getRelativeWidth(15),
         top: options.getRelativeHeight(87.5),
     });
     canvas.add(oImage);
@@ -124,7 +228,15 @@ let studentInput = document.getElementById('student')
 studentInput.addEventListener('input', () => {
     studentCanvasText.text = studentInput.value
     canvas.renderAll()
-});
+})
+
+let locationInput = document.getElementById('location')
+locationInput.addEventListener('input', () => {
+    list.item(3).item(1).set({
+        text: locationInput.value
+    })
+    canvas.renderAll()
+})
 
 //-----------------------------------
 

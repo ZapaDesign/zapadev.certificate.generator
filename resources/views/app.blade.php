@@ -113,6 +113,9 @@
                         </form>
                     </div>
                     <div class="canvas-wrap col-span-12 sm:col-span-9">
+                        <h2 class="canvas__title">
+                            Certificate preview
+                        </h2>
                         <canvas
                                 class="canvas"
                                 id="canvas"
