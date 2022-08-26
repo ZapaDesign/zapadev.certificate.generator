@@ -76,7 +76,7 @@ let canvas = new fabric.Canvas("canvas", {
     selection: true,
     selectionBorderColor: 'green',
     backgroundColor: null,
-    interactive: false
+    interactive: false,
 });
 
 canvas.setBackgroundImage(options.bgUrl, canvas.renderAll.bind(canvas), {
