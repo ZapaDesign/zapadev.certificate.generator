@@ -10,6 +10,9 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="grid grid-cols-12 gap-6 p-6">
                     <div class="col-span-12 sm:col-span-3">
+                        <h2 class="canvas__title">
+                            Certificate form
+                        </h2>
                         <form>
                             @csrf
 
@@ -113,7 +116,7 @@
                         </form>
                     </div>
                     <div class="canvas-wrap col-span-12 sm:col-span-9">
-                        <h2 class="canvas__title">
+                        <h2 class="canvas__title mb-5">
                             Certificate preview
                         </h2>
                         <canvas

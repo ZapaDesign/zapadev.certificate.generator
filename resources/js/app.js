@@ -97,14 +97,22 @@ let studentCanvasText = new fabric.Text('', {
     fontWeight: 700,
     selectable: false,
 }),
-beforeCanvasText = new fabric.Text( options.beforeText, {
-    left: options.getXCenter(),
-    top: options.getRelativeHeight(23),
-    fontSize: 100,
-    originX: 'center',
-    fontFamily: options.fontFamily,
-    selectable: false,
-}),
+    idCanvas = new fabric.Text(options.id, {
+        left: options.getXCenter(),
+        top: options.getRelativeHeight(12.9),
+        fontSize: 50,
+        originX: 'center',
+        fontFamily: options.fontFamily,
+        selectable: false,
+    }),
+    beforeCanvasText = new fabric.Text( options.beforeText, {
+        left: options.getXCenter(),
+        top: options.getRelativeHeight(23),
+        fontSize: 100,
+        originX: 'center',
+        fontFamily: options.fontFamily,
+        selectable: false,
+    }),
 afterCanvasText = new fabric.Text( options.afterText, {
     left: options.getXCenter(),
     top: options.getRelativeHeight(38),
@@ -131,6 +139,7 @@ contactsCanvasText = new fabric.Text( options.contacts, {
 })
 
 
+canvas.add(idCanvas)
 canvas.add(beforeCanvasText)
 canvas.add(studentCanvasText).setActiveObject(studentCanvasText)
 canvas.add(afterCanvasText)
