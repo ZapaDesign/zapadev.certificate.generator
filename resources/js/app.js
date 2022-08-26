@@ -55,6 +55,8 @@ let options = {
     signatureUrl: 'http://zapadev.certificate.generator/assets/images/certificate-signature-demo.svg',
     logoUrl: 'http://zapadev.certificate.generator/assets/images/certificate-logo-demo.svg',
     director: {
+        x: 83,
+        y: 91,
         name: 'Oksana Zaparenko',
         position: 'Director',
     },
@@ -73,7 +75,7 @@ let options = {
 
 let canvas = new fabric.Canvas("canvas", {
     hoverCursor: 'pointer',
-    selection: true,
+    selection: false,
     selectionBorderColor: 'green',
     backgroundColor: null,
     interactive: false,
@@ -92,6 +94,8 @@ let studentCanvasText = new fabric.Text('', {
     fontSize: 220,
     originX: 'center',
     fontFamily: options.fontFamily,
+    fontWeight: 700,
+    selectable: false,
 }),
 beforeCanvasText = new fabric.Text( options.beforeText, {
     left: options.getXCenter(),
@@ -99,6 +103,7 @@ beforeCanvasText = new fabric.Text( options.beforeText, {
     fontSize: 100,
     originX: 'center',
     fontFamily: options.fontFamily,
+    selectable: false,
 }),
 afterCanvasText = new fabric.Text( options.afterText, {
     left: options.getXCenter(),
@@ -106,6 +111,7 @@ afterCanvasText = new fabric.Text( options.afterText, {
     fontSize: 100,
     originX: 'center',
     fontFamily: options.fontFamily,
+    selectable: false,
 }),
 afterStrongCanvasText = new fabric.Text( options.afterStrongText, {
     left: options.getXCenter(),
@@ -113,6 +119,7 @@ afterStrongCanvasText = new fabric.Text( options.afterStrongText, {
     fontSize: 120,
     originX: 'center',
     fontFamily: options.fontFamily,
+    selectable: false,
 }),
 contactsCanvasText = new fabric.Text( options.contacts, {
     left: options.getRelativeWidth(15),
@@ -120,12 +127,19 @@ contactsCanvasText = new fabric.Text( options.contacts, {
     fontSize: 40,
     originX: 'left',
     fontFamily: options.fontFamily,
+    selectable: false,
 })
 
 
+canvas.add(beforeCanvasText)
+canvas.add(studentCanvasText).setActiveObject(studentCanvasText)
+canvas.add(afterCanvasText)
+canvas.add(afterStrongCanvasText)
+
+canvas.add(contactsCanvasText)
+
+
 // List
-
-
 let list = new fabric.Group([
     new fabric.Group([
         new fabric.Text(options.list.period.label + ':', {
@@ -193,9 +207,33 @@ let list = new fabric.Group([
     })], {
     left: options.getRelativeWidth(options.list.x),
     top: options.getRelativeHeight(options.list.y),
+    selectable: false,
 })
-
 canvas.add(list);
+
+
+// Director
+let director = new fabric.Group([
+        new fabric.Text( options.director.name, {
+            fontSize: 40,
+            fontFamily: options.fontFamily,
+            selectable: false,
+            originX: 'right',
+        }),
+        new fabric.Text( options.director.position, {
+            fontSize: 40,
+            fontFamily: options.fontFamily,
+            top: options.getRelativeHeight(2),
+            selectable: false,
+            originX: 'right',
+
+        })
+    ], {
+    left: options.getRelativeWidth(options.director.x),
+    top: options.getRelativeHeight(options.director.y),
+    selectable: false,
+})
+canvas.add(director);
 
 
 //----------
@@ -204,6 +242,7 @@ fabric.Image.fromURL(options.logoUrl, (image) => {
     const oImage = image.set({
         left: options.getRelativeWidth(15),
         top: options.getRelativeHeight(87.5),
+        selectable: false,
     });
     canvas.add(oImage);
 });
@@ -211,17 +250,12 @@ fabric.Image.fromURL(options.signatureUrl, (image) => {
     const oImage = image.set({
         left: options.getRelativeWidth(60),
         top: options.getRelativeHeight(90),
+        selectable: false,
     });
     canvas.add(oImage);
 });
 
 
-canvas.add(beforeCanvasText)
-canvas.add(studentCanvasText).setActiveObject(studentCanvasText)
-canvas.add(afterCanvasText)
-canvas.add(afterStrongCanvasText)
-
-canvas.add(contactsCanvasText)
 
 //-----------------------------------
 let studentInput = document.getElementById('student')
